@@ -5,6 +5,15 @@
 
     import filter_ico from '$assets/filter.png'
 
+    let rooms_cont: HTMLDivElement;
+
+    $: is_rooms_scrollable = is_scrollable(rooms_cont)
+
+    function is_scrollable(elem: HTMLDivElement, _deps?: any) {
+        if (elem)
+            return elem.scrollHeight > elem.clientHeight || elem.scrollWidth > elem.clientWidth;
+        return false
+    }
 </script>
   
 <div class="cont">
@@ -34,9 +43,55 @@
             <img src="{filter_ico}" alt="fsdf">
         </div>
     </div>
+
+    <div bind:this={rooms_cont} class="rooms-cont" class:is_rooms_scrollable>
+        <RoomItem/>
+        <RoomItem/>
+        <RoomItem/>
+        <RoomItem/>
+        <RoomItem/>
+        <RoomItem/>
+        <RoomItem/>
+        <RoomItem style="list-{is_rooms_scrollable ? 'mid' : 'last'}"/>
+    </div>
+
+
 </div>
 
 <style>
+.rooms-cont {
+    margin-top: 3px;
+    /* padding-bottom: 22px; */
+    overflow-y: hidden;
+    /* direction: rtl; */
+}
+
+.rooms-cont.is_rooms_scrollable:hover {
+    overflow-y: auto;
+    width: calc(100% + 5px);
+}
+
+.cont {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: 350px;
+    margin: 24px;
+    padding: 22px;
+
+    overflow: hidden;
+    padding-bottom: 0;
+
+
+    background-color: var(--sec-container);
+    border-radius: 35px; 
+
+    display: flex;
+    flex-direction: column;
+}
+
 .filter-icon-wrapper {
     display: flex;
     justify-content: space-between;
@@ -80,7 +135,7 @@
     justify-content: space-between;
 
     font-size: inherit;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 }
 
 .filter-cont {
@@ -99,21 +154,6 @@
 
     margin-top: 10px;
     margin-bottom: 30px;
-}
-
-.cont {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-
-    margin: 24px;
-    padding: 22px;
-    width: 350px;
-
-    background-color: var(--sec-container);
-    border-radius: 35px; 
-
 }
 
 </style>

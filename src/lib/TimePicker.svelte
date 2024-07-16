@@ -63,8 +63,8 @@ input.style-filter {
     color: var(--ter-on);
 }
 
-input.style-filter:focus {
-    outline: var(--ter-fixed) solid 1px;
+input.style-filter:focus-visible {
+    outline: 1px solid var(--ter-fixed);
 }
 
 input.style-filter::-webkit-datetime-edit-hour-field:focus,
@@ -92,8 +92,8 @@ input::-webkit-datetime-edit-ampm-field:focus {
     background: transparent;
 }
 
-button:has(~ input:focus) {
-    display: inline;
+button.style-filter:focus-visible {
+    outline: 1px solid var(--ter-fixed);
 }
 
 

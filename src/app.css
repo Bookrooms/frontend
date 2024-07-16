@@ -24,6 +24,23 @@ div {
   margin: 0;
 }
 
+::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: var(--sec-fixed-dim);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ter-fixed-dim);
+}
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
 body {
   --ter: #61597C;
   --ter-on: #FFFFFF;
