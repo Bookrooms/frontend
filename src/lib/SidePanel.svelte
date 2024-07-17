@@ -2,10 +2,13 @@
     import RoomItem from './RoomItem.svelte'
     import TimePicker from './TimePicker.svelte'
     import DatePicker from './DatePicker.svelte'
-
     import filter_ico from '$assets/filter.png'
 
+    import { DateTime } from "luxon";
+
+
     let rooms_cont: HTMLDivElement;
+    let timeline_scroll = 0;
 
     $: is_rooms_scrollable = is_scrollable(rooms_cont)
 
@@ -20,7 +23,6 @@
     <h1 class="fondamento-regular logo-text">Bookrooms</h1>
     <div class="filter-cont inter-extra">
         <div class="filter-firstrow">
-            <!-- <span class="inter-extra">At</span> -->
             <TimePicker style="filter-extra"></TimePicker>
             <!-- <span>-</span> -->
             <DatePicker style="filter-extra"></DatePicker>
@@ -45,14 +47,20 @@
     </div>
 
     <div bind:this={rooms_cont} class="rooms-cont" class:is_rooms_scrollable>
-        <RoomItem/>
-        <RoomItem/>
-        <RoomItem/>
-        <RoomItem/>
-        <RoomItem/>
-        <RoomItem/>
-        <RoomItem/>
-        <RoomItem style="list-{is_rooms_scrollable ? 'mid' : 'last'}"/>
+        <RoomItem bind:timeline_scroll 
+            timeline_entries={[[DateTime.fromObject({ hour: 10, minute: 20}), DateTime.fromObject({ hour: 15})],
+                                [DateTime.fromObject({ hour: 7, minute: 30}), DateTime.fromObject({ hour: 9})]
+                            ]}
+            on:click={() => console.log("clicked!")} 
+            on:show3d={() => console.log("show3d!")} 
+            />
+        <RoomItem bind:timeline_scroll/>
+        <RoomItem bind:timeline_scroll/>
+        <RoomItem bind:timeline_scroll/>
+        <RoomItem bind:timeline_scroll/>
+        <RoomItem bind:timeline_scroll/>
+        <RoomItem bind:timeline_scroll/>
+        <RoomItem bind:timeline_scroll style="list-{is_rooms_scrollable ? 'mid' : 'last'}"/>
     </div>
 
 
@@ -114,6 +122,7 @@
     background: transparent;
     font-size: 20px;
     border-radius: 5px;
+    color: var(--ter-on);
 }
 
 .filter-row > select:focus {
