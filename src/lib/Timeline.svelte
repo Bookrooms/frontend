@@ -10,7 +10,7 @@
     let viewport: HTMLDivElement;
     let hour_position = 0;
 
-    $: viewport_len = Math.floor(viewport?.clientWidth / hour_cell_width) * hour_cell_width
+    $: viewport_len = Math.floor(viewport?.offsetWidth / hour_cell_width) * hour_cell_width
     $: if (viewport) viewport.scroll(scroll_pos, viewport.scrollTop)
 
     function on_scroll(e: Event) {

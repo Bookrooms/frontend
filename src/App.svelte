@@ -2,6 +2,10 @@
   import SidePanel from '$lib/SidePanel.svelte'
   import BottomFilter from '$lib/BottomFilter.svelte'
   import AccountPanel from '$lib/AccountPanel.svelte'
+  import { init } from '$lib/main.js'
+
+  
+  init();
 
 </script>
 

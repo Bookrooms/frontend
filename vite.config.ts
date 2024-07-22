@@ -5,6 +5,7 @@ import { resolve } from "path"
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [svelte()],
+  assetsInclude: ['**/*.fbx'],
   resolve: {
     alias: {
       $lib: resolve("./src/lib"),

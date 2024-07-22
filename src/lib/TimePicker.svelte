@@ -5,6 +5,7 @@
 
     export let style = "filter-medium";
     export let time = now;
+    export let disableable = false;
     export let enabled = true;
 
     function get_style(level: number) {
@@ -44,7 +45,9 @@
 </script>
   
 <span>
+    {#if disableable}
     <button on:click={switch_state} class="style-{get_style(0)} inter-{get_style(1)}" class:enabled>•</button>
+    {/if}
     <input type="time" step="600" class="style-{get_style(0)} inter-{get_style(1)}" bind:value={time_fmt}>
 </span>
 

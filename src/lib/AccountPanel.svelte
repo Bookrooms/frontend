@@ -24,6 +24,7 @@
     </div>
     <div class="bookings-cont">
         <BookingItem></BookingItem>
+        <BookingItem></BookingItem>
     </div>
 </div>
 
