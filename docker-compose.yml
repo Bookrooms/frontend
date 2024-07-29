@@ -1,0 +1,8 @@
+services:
+  frontend:
+    build: .
+    image: bookrooms_frontend
+    ports:
+      - 5173:5173
+    volumes:
+      - .:/app
