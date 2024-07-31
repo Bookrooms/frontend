@@ -1,0 +1,3 @@
+[submodule "src/assets/3D"]
+	path = src/assets/3D
+	url = git@github.com:Bookrooms/3D-models.git
