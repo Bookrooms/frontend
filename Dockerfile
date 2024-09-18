@@ -1,10 +1,8 @@
 FROM node:latest
-WORKDIR /app
+WORKDIR /frontend
 
 COPY package*.json .
-RUN npm i
+RUN npm install && npm cache clean --force
 
 COPY . .
 RUN npm run build
-
-ENTRYPOINT [ "./docker-entrypoint.sh" ]
